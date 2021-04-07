@@ -1,0 +1,65 @@
+Name
+Primary Skillset
+Total Experience
+Node.js Experience
+
+What is Node.js?
+    JRE
+
+C
+~1980 - C++
+1995 - Java, JavaScript, Ruby
+1998 - C#, .NET
+
+2008 - Node.js
+    JavaScript
+    Cross Platform
+    Event Driven - Asynchronous
+    Scalable
+
+Extremely Less resources
+    How?
+    Single Threaded Event Loop
+
+Reception
+    1. Visitor
+        Visitor Ledger
+        Gadget Ledger
+        Escorted
+    2. Courier Guy
+        Courier Ledger
+    3. Associate
+        Temp Badge Ledger
+
+
+1. Single Threaded
+        Blocking
+
+        ( - ) Time consuming
+        ( + ) Simplicity
+
+2. Multi Threaded
+        Blocking
+
+        ( + ) Less time
+        ( - ) Costly
+
+3. Single Threaded
+        Non Blocking
+        Token - events
+        Tray - Event Loop
+
+        ( + ) Less time
+        ( + ) Cost Efficient
+
+        ( - )
+
+
+
+
+50 - 5
+500 - 50
+1 Receptionist
+
+
+
