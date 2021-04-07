@@ -61,5 +61,15 @@ Reception
 500 - 50
 1 Receptionist
 
+REPL - Read Evaluate Print Loop
+
+CommonJS
+    Everything defined in a js file is considered private
+    If anything need to be exposed to the outside world, it has to be explicitly exported
+        module.exports = /* entity to be exported */
+        The default value of module.exports is an empty object
+
+    To use an entity from another file, it has to explicitly imported
+        var <variable> = require('....js')
 
 
