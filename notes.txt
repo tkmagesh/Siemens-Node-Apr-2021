@@ -86,3 +86,20 @@ Create the following files as given below:
         acc.multiply(10)
         acc.divide(2)
         console.log(acc.getResult())  //=> ((100-50)*10)/2 => 250
+
+Assignment
+    Read the calculator.dat
+    parse the lines
+    call the calculator accordingly
+    get result
+    write the result in new file 'calculator-result.dat' in the follwing format
+        add,10,20,30
+
+    Version - 1
+        use readFileSync()
+
+    Version - 2
+        use readFile()
+
+    Version - 3
+        use createReadStream()

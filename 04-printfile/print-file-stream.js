@@ -28,3 +28,11 @@ stream.on('error', function(err){
     console.log('something went wrong!');
     console.log(err);
 })
+
+/* 
+Abstract Classes
+    ReadStream (Inherited from Stream.Readable)
+    WriteStream (Inherited from Stream.Writable)
+
+    Both of the above inherit EventEmitter
+*/
