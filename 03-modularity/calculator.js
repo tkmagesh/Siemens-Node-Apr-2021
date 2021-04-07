@@ -1,4 +1,4 @@
-var calculator = {
+var calculatorObject = {
     add(x,y){
         return x + y;
     },
@@ -13,4 +13,11 @@ var calculator = {
     }
 };
 
-module.exports = calculator;
+function greet(name){
+    return 'Hi ' + name + ', Have a nice day!';
+}
+
+module.exports = {
+    calculator : calculatorObject,
+    greet : greet
+};
