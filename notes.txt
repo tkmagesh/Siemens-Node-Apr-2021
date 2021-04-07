@@ -72,4 +72,17 @@ CommonJS
     To use an entity from another file, it has to explicitly imported
         var <variable> = require('....js')
 
+Modularity assignment
+Create the following files as given below:
 
+    accmulator.js
+        //implement the accumulator based on the usage in the accmulator-client.js
+
+
+    accmulator-client.js
+        import accmulator
+        acc.add(100)
+        acc.subtract(50)
+        acc.multiply(10)
+        acc.divide(2)
+        console.log(acc.getResult())  //=> ((100-50)*10)/2 => 250
