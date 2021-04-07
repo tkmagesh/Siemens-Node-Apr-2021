@@ -6,12 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scheduler Demo</title>
     <script>
-        function doWork(){
-            for(var i=0; i<15000; i++)
-                for(var j=0; j<10000; j++)
-                    for(var k= 0; k<100; k++){
+        function doWork(workComplete, workProgress){
+            var totalIterations = 1000,
+                currentIteration = 0;
 
-                    }
+            function oneIteration(){
+                for(var i=0; i< (15000/totalIterations) ; i++)
+                    for(var j=0; j<10000; j++)
+                        for(var k= 0; k<100; k++){
+
+                        }
+                ++currentIteration;
+                if (currentIteration % 10 === 0){
+                    var percentCompleted = (currentIteration/totalIterations) * 100;
+                    workProgress(percentCompleted);
+                }
+                if (currentIteration < totalIterations){
+                    setTimeout(oneIteration);
+                } else {
+                    workComplete();
+                }
+            }
+            setTimeout(oneIteration);
         }
         function displayMessage(msg){
             var divMessages = document.getElementById('divMessages');
@@ -19,8 +35,15 @@
         }
         function onBtnDoWorkClick(){
             displayMessage('Work Started');
-            doWork();
-            displayMessage('Work Completed');
+            doWork(onWorkCompletion, onWorkProgress);
+        }
+
+        function onWorkCompletion(){
+             displayMessage('Work Completed');
+        }
+
+        function onWorkProgress(percentCompleted){
+            document.getElementById('workProgress').value = percentCompleted;
         }
         function onDocumentLoad(){
             var btnDoWork = document.getElementById('btnDoWork');
@@ -35,6 +58,9 @@
     <hr>
     <input type="text" name="" id="">
     <input type="button" value="Do Work" id="btnDoWork">
+    <div>
+        <progress id="workProgress" min="0" max="100" value="0"></progress>
+    </div>
     <div id="divMessages"></div>
 </body>
 </html>
