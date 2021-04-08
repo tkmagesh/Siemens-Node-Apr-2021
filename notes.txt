@@ -122,3 +122,9 @@ Combine the functionality of 'web server' and 'calculator server'  in one server
         process the incoming data for calculator
     else 
         send 404
+
+Reorganise the web-calculator-server into the the following modules
+    parsing incoming data
+    serving static resources
+    handling calculator requests
+    serving 404
