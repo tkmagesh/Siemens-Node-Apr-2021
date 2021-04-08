@@ -1,7 +1,7 @@
 var querystring = require('querystring'),
     calculator = require('./calculator');
 
-function serveCalculator (req, res){
+function serveCalculator (req, res, next){
     if (req.urlObj.pathname === '/calculator') {
         //to be refactored to 'data parser'
         var querystringObj = querystring.parse(req.urlObj.search.substr(1));
@@ -12,11 +12,12 @@ function serveCalculator (req, res){
             if (!calculator.hasOwnProperty(op)){
                 res.statusCode = 400;
                 res.end();
-                return;
+                return next();
             }
             var result = calculator[op](n1, n2);
             res.write(result.toString());
             res.end();
+            next();
         } else if (req.method === 'POST'){
             var rawData = '';
             req.on('data', function(chunk){
@@ -31,16 +32,20 @@ function serveCalculator (req, res){
                 if (!calculator.hasOwnProperty(op)){
                     res.statusCode = 400;
                     res.end();
-                    return;
+                    return next();
                 }
                 var result = calculator[op](n1, n2);
                 res.write(result.toString());
                 res.end();
+                next();
             })
         } else {
             res.statusCode = 400;
             res.end();
+            next();
         }
+    } else {
+        next();
     }
 }
 

@@ -4,12 +4,21 @@ var http = require('http'),
     serveCalculator = require('./serve-calculator'),
     serve404 = require('./serve404');
 
+var middlewares = [ dataParser, serveStatic, serveCalculator, serve404 ];
+
+function exec(req, res, middlewares){
+    var first = middlewares[0],
+        remaining = middlewares.slice(1),
+        next = function(){
+            exec(req, res, remaining)
+        };
+    if (typeof first === 'function'){
+        first(req, res, next);
+    }
+}
+
 var server = http.createServer(function(req , res){
-    dataParser(req);
-    console.log(req.method + '\t' + req.urlObj.pathname);
-    serveStatic(req, res);
-    serveCalculator(req, res);
-    serve404(res);
+    exec(req, res, middlewares);
 });
 
 server.listen(8080);
