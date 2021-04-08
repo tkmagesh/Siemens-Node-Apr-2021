@@ -1,8 +1,7 @@
 
 var http = require('http'),
     path = require('path'),
-    fs = require('fs'),
-    url = require('url');
+    fs = require('fs');
 
 var server = http.createServer(function(req /* IncomingMessage */, res /* ServerResponse */){
     //this function executes whenever a new connection is established

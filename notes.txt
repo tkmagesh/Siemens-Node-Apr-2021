@@ -103,3 +103,13 @@ Assignment
 
     Version - 3
         use createReadStream()
+
+Create a new server that can serve the following requests
+    http://localhost:8080/calculator?x=100&y=200&op=add
+    http://localhost:8080/calculator?x=100&y=200&op=subtract
+    http://localhost:8080/calculator?x=100&y=200&op=multiply
+    http://localhost:8080/calculator?x=100&y=200&op=divide
+
+    hint:
+        use 'new URL()' for parsing urls
+        use 'querystring.parse()' for parsing querystring
