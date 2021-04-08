@@ -113,3 +113,12 @@ Create a new server that can serve the following requests
     hint:
         use 'new URL()' for parsing urls
         use 'querystring.parse()' for parsing querystring
+
+
+Combine the functionality of 'web server' and 'calculator server'  in one server
+    if req is for any static resource [html, js, css, jpg, png, ico, xml, txt, json]
+        read the file and server it if the file exists
+    if req is for '/calculator'
+        process the incoming data for calculator
+    else 
+        send 404
