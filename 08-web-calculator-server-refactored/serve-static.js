@@ -1,6 +1,6 @@
 var path = require('path'),
     fs = require('fs');
-    
+
 var staticResExtns = ['.html', '.js', '.css', '.jpg', '.png', '.ico', '.xml', '.txt', '.json'];
 
 function isStaticResource(resourceName){
@@ -17,7 +17,15 @@ function serveStatic(req, res){
             return;
         }
         var stream = fs.createReadStream(resPath);
-        stream.pipe(res);
+        //stream.pipe(res);
+        stream.on('data', function(chunk){
+            console.log('[@serve-static] read and writing chunk');
+            res.write(chunk);
+        });
+        stream.on('end', function(){
+            console.log('[@serve-static] end of stream')
+            res.end();
+        });
     } 
 }
 
