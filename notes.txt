@@ -152,3 +152,17 @@ npmjs.com
 
 npm install <package_name>
 npm install chalk
+
+install dev dependencies
+npm install <package_name> --save-dev
+npm install nodemon --save-dev
+
+configure custom commands (apart from start & test) in package.json file
+"scripts" : {
+    ...
+    "start:dev" : "nodemon server.js"
+}
+
+how to run the custom command
+npm run <command_name>
+npm run start:dev
