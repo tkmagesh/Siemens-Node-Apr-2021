@@ -189,7 +189,6 @@ customers
 users
 orders
 
-
 app.js
     app.use('/products', productsRoute);
 
@@ -199,3 +198,10 @@ productsRoute.js
     router.post('/')
     router.put('/10')
     router.delete('/10')
+
+important middleware
+    helmet (for security) - https://www.npmjs.com/package/helmet
+    cors - https://www.npmjs.com/package/cors
+    session - https://www.npmjs.com/package/express-session
+    passport - authentication & authorization
+
