@@ -3,12 +3,48 @@ var path = require('path'),
 
 var dbFile = path.join(__dirname, '../db/db.json');
 
+//Using promises
 function readAll(){
-    //read the bugs from the file and return
+    return new Promise(function(resolveFn, rejectFn){
+        fs.readFile(dbFile, { encoding : 'utf8'}, function(err, fileContents){
+            if (err){
+                return rejectFn(err)
+            };
+            var bugs = JSON.parse(fileContents);
+            return resolveFn(bugs);
+        })
+    });
 }
 
 function save(bugs){
-    //write the bugs into the file
+    return new Promise(function(resolveFn, rejectFn){
+        fs.writeFile(dbFile, JSON.stringify(bugs), {encoding : 'utf8'}, function(err){
+            if (err){
+                return rejectFn(err);
+            }
+            resolveFn();
+        });
+    });
 }
+
+//Using callbacks
+/* function readAll(callback){
+    fs.readFile(dbFile, { encoding : 'utf8'}, function(err, fileContents){
+        if (err){
+            return callback(err, null)
+        };
+        var bugs = JSON.parse(fileContents);
+        return callback(null, bugs);
+    })
+}
+
+function save(bugs, callback){
+     fs.writeFile(dbFile, JSON.stringify(bugs), {encoding : 'utf8'}, function(err){
+        if (err){
+            return callback(err);
+        }
+        callback();
+    });
+} */
 
 module.exports = { readAll, save };
