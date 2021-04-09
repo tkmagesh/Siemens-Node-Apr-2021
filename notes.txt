@@ -166,3 +166,36 @@ configure custom commands (apart from start & test) in package.json file
 how to run the custom command
 npm run <command_name>
 npm run start:dev
+
+npx
+
+npx express-generator -v hbs bug-tracker
+
+Routes
+    GET /calculator
+    POST /calculator
+
+router
+    
+    router.get('/calculator', function(){
+
+    })
+    router.post('/calculator', function(){
+
+    })
+
+products
+customers
+users
+orders
+
+
+app.js
+    app.use('/products', productsRoute);
+
+productsRoute.js
+    router.get('/')
+    router.get('/10')
+    router.post('/')
+    router.put('/10')
+    router.delete('/10')
