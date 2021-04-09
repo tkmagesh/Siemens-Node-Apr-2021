@@ -1,5 +1,7 @@
 var express = require('express'),
-    router = express.Router();
+    router = express.Router(),
+    bugDb = require('../services/bugDb');
+   
 
 /* 
 var bugsList = [
@@ -9,26 +11,54 @@ var bugsList = [
 ]; 
 */
 
+
 router.get('/', function(req, res, next){
-    res.json(bugsList);
+    fs.readFile(dbFile, { encoding : 'utf8'}, function(err, fileContents){
+        if (err){
+            return res.sendStatus(500);
+        };
+        var bugs = JSON.parse(fileContents);
+        res.json(bugs);
+    })
+    
 });
 
 router.get('/:id', function(req, res, next){
     var id = parseInt(req.params.id);
     //var bug = bugsList.find(function(b){ return b.id === id});
-    var bug = bugsList.find(b => b.id === id);
-    if (!bug){
-        res.sendStatus(404)
-    } else {
-        res.json(bug);
-    }
+    fs.readFile(dbFile, { encoding : 'utf8'}, function(err, fileContents){
+        if (err){
+            return res.sendStatus(500);
+        };
+        var bugs = JSON.parse(fileContents);
+        var bug = bugs.find(b => b.id === id);
+        if (!bug){
+            res.sendStatus(404)
+        } else {
+            res.json(bug);
+        }
+    });
 });
 
 router.post('/', function(req, res, next){
-    var bugData = { ...req.body };
-    bugData.id = bugsList.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1;
-    bugsList.push(bugData);
-    res.status(201).json(bugData);
+
+    fs.readFile(dbFile, { encoding : 'utf8'}, function(err, fileContents){
+        if (err){
+            return res.sendStatus(500);
+        };
+        var bugs = JSON.parse(fileContents);
+        var bugData = { ...req.body };
+        bugData.id = bugs.reduce((result, bug) => result > bug.id ? result : bug.id, 0) + 1;
+        bugs.push(bugData);
+        fs.writeFile(dbFile, JSON.stringify(bugs), {encoding : 'utf8'}, function(err){
+            if (err){
+                return res.sendStatus(500);
+            }
+            res.status(201).json(bugData);
+        });
+    });
+    
+    
 })
 
 router.put('/:id', function(req, res, next){

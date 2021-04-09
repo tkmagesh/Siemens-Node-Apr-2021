@@ -1,5 +1,1 @@
-[
-    {"id" : 1, "name" : "Server communication failure", "isClosed" : false, "createdAt" : "2021-04-09T08:41:11.586Z"},
-    {"id" : 2, "name" : "User actions not recognized", "isClosed" : true, "createdAt" : "2021-04-09T08:41:11.586Z"},
-    {"id" : 3, "name" : "Application not responding", "isClosed" : false, "createdAt" : "2021-04-09T08:41:11.586Z"}
-]
+[{"id":1,"name":"Server communication failure","isClosed":false,"createdAt":"2021-04-09T08:41:11.586Z"},{"id":2,"name":"User actions not recognized","isClosed":true,"createdAt":"2021-04-09T08:41:11.586Z"},{"id":3,"name":"Application not responding","isClosed":false,"createdAt":"2021-04-09T08:41:11.586Z"},{"id":4,"name":"DB persistance fails","isClosed":false,"createdAt":"2021-04-09T08:41:11.586Z"},{"id":5,"name":"Unable to add bugs","isClosed":false,"createdAt":"2021-04-09T07:17:43.733Z"}]
