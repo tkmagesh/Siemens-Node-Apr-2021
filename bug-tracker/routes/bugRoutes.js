@@ -1,11 +1,13 @@
 var express = require('express'),
     router = express.Router();
 
+/* 
 var bugsList = [
     {id : 1, name : 'Server communication failure', isClosed : false, createdAt : new Date()},
     {id : 2, name : 'User actions not recognized', isClosed : true, createdAt : new Date()},
     {id : 3, name : 'Application not responding', isClosed : false, createdAt : new Date()},
-];
+]; 
+*/
 
 router.get('/', function(req, res, next){
     res.json(bugsList);
