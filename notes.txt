@@ -132,3 +132,23 @@ Reorganise the web-calculator-server into the the following modules
 Assignments:
 modify serve-static.js to receive the 'public folder path'
 move the data parsing logic from serve-calculator.js to data-parser.js
+
+package.json
+    manifest file containing metadata information about the application
+    name
+    version
+    author
+    repository
+    private
+    license
+    description
+    keywords
+    dependencies
+    devDependencies
+    scripts
+
+npm - node package manager
+npmjs.com
+
+npm install <package_name>
+npm install chalk
